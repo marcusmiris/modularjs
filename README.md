@@ -23,7 +23,12 @@ Example:
         // e.g. register a callback that will be triggered when its dependencies are defined.
         require(['firstName', 'fullName'], function(firstName, fullName) {
             console.log('First Name: ' + firstName);
-            console.log('Full Name:  ' + fullName);
+            console.log('Full Name: ' + fullName);
+        });
+        
+        // you can also avoid injectable arguments on register callbacks, like this:
+        require(['fullName'], function() {
+            console.log('Full Name Again: ' + require('fullName'));
         });
 
     })(modularjs.define, modularjs.require)
@@ -31,4 +36,5 @@ Example:
 Result in console:
 
     First Name: Steve
-    Full Name:  Steve Jobs
+    Full Name: Steve Jobs
+    Full Name Again: Steve Jobs 
